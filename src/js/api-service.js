@@ -19,9 +19,9 @@ export default class AxiosService {
       per_page: this.pageLimit,
       key: KEY,
       q: this.searchValue,
-      // image_type: 'photo',
-      // orientation: 'horizontal',
-      // safesearch: 'true',
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: 'true',
     };
     const result = await axios.get(`${BASE_URL}?${options}`);
     console.log(result);
