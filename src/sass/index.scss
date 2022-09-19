@@ -45,11 +45,23 @@ body {
   justify-content: space-around;
 }
 .photo-card {
-    position: relative;
-        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-            0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 20px;
 }
 .photo-card__image {
   width: 300px;
   height: 200px;
+}
+.photo-card__item {
+    display: block;
+    text-decoration: none;
+}
+
+.photo-card__item:hover {
+    cursor: zoom-in;
+}
+.info {
+    margin: 10px;
 }

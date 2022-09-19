@@ -3,12 +3,12 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = getRefs();
-var lightbox = new SimpleLightbox('.gallery a', {
+let lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
-  overlayOpacity: 0.4,
-  captionData: 'alt',
+  overlayOpacity: 0.8,
+  captionsData: 'alt',
+  captionPosition: 'bottom',
 });
-
 function createCardsImage({ hits }) {
   const markup = hits
     .map(
@@ -23,7 +23,7 @@ function createCardsImage({ hits }) {
       }) => {
         return `<div class="photo-card">
       <a class="photo-card__item" href="${largeImageURL}">
-  <img class="photo-card__image" src="${webformatURL}" alt="${tags} width="320" heigth="240" " loading="lazy" /></a>
+  <img class="photo-card__image" src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
   <div class="info">
     <p class="info-item">
       <b>Likes</b> ${likes}
@@ -43,6 +43,7 @@ function createCardsImage({ hits }) {
     )
     .join('');
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh();
 }
 
 function clearCardsImage() {
