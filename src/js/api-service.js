@@ -1,29 +1,27 @@
 const axios = require('axios').default;
 
 const BASE_URL = 'https://pixabay.com/api/';
-const KEY = 'key=29999099-708b113120f887f079bd929c2';
+const KEY = '29999099-708b113120f887f079bd929c2';
 
 export default class AxiosService {
-  constructor(searchValue, currentPage, pageLimit) {
+  constructor(searchValue, currentPage) {
     this.searchValue = searchValue;
     this.currentPage = currentPage;
-    this.pageLimit = pageLimit;
   }
   searchValue = '';
   currentPage = 1;
-  pageLimit = 40;
 
   async fetchCards() {
-    const options = {
+    const options = new URLSearchParams({
       page: this.currentPage,
-      per_page: this.pageLimit,
+      per_page: 40,
       key: KEY,
       q: this.searchValue,
       image_type: 'photo',
       orientation: 'horizontal',
       safesearch: 'true',
-    };
-    const result = await axios.get(`${BASE_URL}?${options}`);
+    });
+    const result = await axios.get(`${BASE_URL}?${options.toString()}`);
     console.log(result);
     this.incrementPage();
     return result;

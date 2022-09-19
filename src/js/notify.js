@@ -8,8 +8,8 @@ export default class NotifyAlert {
     );
   }
 
-  onSuccess(totalHits) {
-    return Notify.success(`Hooray! We found ${totalHits} images.`);
+  onSuccess(total) {
+    return Notify.success(`Hooray! We found ${total} images.`);
   }
 
   onSeachEndList() {

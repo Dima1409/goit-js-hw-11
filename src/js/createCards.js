@@ -9,8 +9,8 @@ var lightbox = new SimpleLightbox('.gallery a', {
   captionData: 'alt',
 });
 
-function createCardsImage({ params }) {
-  const markup = params
+function createCardsImage({ hits }) {
+  const markup = hits
     .map(
       ({
         webformatURL,
@@ -23,19 +23,19 @@ function createCardsImage({ params }) {
       }) => {
         return `<div class="photo-card">
       <a class="photo-card__item" href="${largeImageURL}">
-  <img src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
+  <img class="photo-card__image" src="${webformatURL}" alt="${tags} width="320" heigth="240" " loading="lazy" /></a>
   <div class="info">
     <p class="info-item">
-      <b>${likes}</b>
+      <b>Likes</b> ${likes}
     </p>
     <p class="info-item">
-      <b>${views}</b>
+      <b>Views</b> ${views}
     </p>
     <p class="info-item">
-      <b>${comments}</b>
+      <b>Comments</b> ${comments}
     </p>
     <p class="info-item">
-      <b>${downloads}</b>
+      <b>Downloads</b> ${downloads}
     </p>
   </div>
 </div>`;

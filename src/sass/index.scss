@@ -6,6 +6,7 @@ body {
     justify-content: center;
     padding: 10px;
     background-color: rgb(178, 116, 236);
+    margin-bottom: 60px;
 }
 
 .search-form input,
@@ -36,4 +37,19 @@ body {
 
 .search-form>button:hover {
     background-color: rgb(189, 189, 189);
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.photo-card {
+    position: relative;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+            0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+.photo-card__image {
+  width: 300px;
+  height: 200px;
 }

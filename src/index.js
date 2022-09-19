@@ -11,7 +11,7 @@ const api = new AxiosService();
 
 refs.searchForm.addEventListener('submit', onSubmitForm);
 
-function onSubmitForm(event) {
+async function onSubmitForm(event) {
   event.preventDefault();
 
   api.query = event.currentTarget.elements.searchQuery.value;
@@ -19,11 +19,13 @@ function onSubmitForm(event) {
   api.resetPage();
 
   try {
-    const data = api.fetchCards();
-    if (!api.query) {
+    const data = await api.fetchCards();
+    if (!api.query || data.data.totalHits === 0) {
       return notify.onError();
     }
-    createCardsImage(data);
+    console.log();
+    notify.onSuccess(data.data.totalHits);
+    createCardsImage(data.data);
   } catch (error) {
     console.log(error);
   }
