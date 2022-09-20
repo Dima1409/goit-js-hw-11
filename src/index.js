@@ -1,15 +1,17 @@
 import './sass/index.scss';
 import getRefs from './js/get-refs';
 import NotifyAlert from './js/notify';
+import LoadBtnMore from './js/btn-load-more';
 import AxiosService from './js/api-service';
 import { createCardsImage, clearCardsImage } from './js/createCards';
-import simpleLightbox from 'simplelightbox';
 
 const refs = getRefs();
 const notify = new NotifyAlert();
 const api = new AxiosService();
+const btnMore = new LoadBtnMore();
 
 refs.searchForm.addEventListener('submit', onSubmitForm);
+refs.btnLoadMore.addEventListener('click', onClickBtnLoadMore);
 
 async function onSubmitForm(event) {
   event.preventDefault();
@@ -23,16 +25,30 @@ async function onSubmitForm(event) {
     if (!api.query || data.data.totalHits === 0) {
       return notify.onError();
     }
-    console.log();
     notify.onSuccess(data.data.totalHits);
     createCardsImage(data.data);
+    refs.btnLoadMore.classList.remove = 'is-hidden';
+    btnMore.enableBtn();
   } catch (error) {
-    console.log(error);
+    console.warn(error);
   }
 }
 
-fetch(
-  `https://pixabay.com/api/?key=29999099-708b113120f887f079bd929c2&q=yellow+flowers&image_type=photo`
-)
-  .then(response => response.json())
-  .then(data => console.log(data));
+async function onClickBtnLoadMore() {
+  try {
+    btnMore.disableBtn();
+    const data = await api.fetchCards();
+    createCardsImage(data.data);
+    btnMore.enableBtn();
+    console.log(data.data.totalHits);
+    console.log(api.currentPage);
+    console.log(api.perPage);
+
+    if (api.currentPage * api.perPage > data.data.totalHits) {
+      btnMore.hideBtnLoadMore();
+      notify.onSeachEndList();
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}

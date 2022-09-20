@@ -4,17 +4,16 @@ const BASE_URL = 'https://pixabay.com/api/';
 const KEY = '29999099-708b113120f887f079bd929c2';
 
 export default class AxiosService {
-  constructor(searchValue, currentPage) {
-    this.searchValue = searchValue;
-    this.currentPage = currentPage;
+  constructor() {
+    this.searchValue = '';
+    this.currentPage = 1;
+    this.perPage = 200;
   }
-  searchValue = '';
-  currentPage = 1;
 
   async fetchCards() {
     const options = new URLSearchParams({
       page: this.currentPage,
-      per_page: 40,
+      per_page: this.perPage,
       key: KEY,
       q: this.searchValue,
       image_type: 'photo',
@@ -41,8 +40,8 @@ export default class AxiosService {
   set query(newValue) {
     this.searchValue = newValue;
   }
-  get currentPage() {
-    let currentPage = this.currentPage - 1;
-    return currentPage;
-  }
+  // get currentPage() {
+  //   let currentPage = this.currentPage - 1;
+  //   return currentPage;
+  // }
 }
