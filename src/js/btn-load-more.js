@@ -2,24 +2,28 @@ import getRefs from './get-refs';
 
 const refs = getRefs();
 
+
 export default class LoadBtnMore {
   constructor() {}
 
   showBtnLoadMore() {
-    refs.btnLoadMore.classList.remove = 'is-hidden';
+   refs.loadMore.classList.remove('is-hidden');
   }
 
   hideBtnLoadMore() {
-    refs.btnLoadMore.classList.add = 'is-hidden';
+    refs.loadMore.classList.add('is-hidden');
   }
 
   enableBtn() {
-    refs.btnLoadMore.disabled = false;
-    refs.btnLoadMore.textContent = 'Load More';
+    refs.loadMore.disabled = false;
+    refs.loadMore.textContent = 'Load More';
+    return
   }
 
   disableBtn() {
-    refs.btnLoadMore.disabled = true;
-    refs.btnLoadMore.textContent = 'uploading...';
+    refs.loadMore.disabled = true;
+    refs.loadMore.textContent = 'uploading...';
+    return
   }
 }
+

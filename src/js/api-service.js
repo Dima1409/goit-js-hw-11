@@ -7,7 +7,7 @@ export default class AxiosService {
   constructor() {
     this.searchValue = '';
     this.currentPage = 1;
-    this.perPage = 200;
+    this.perPage = 20;
   }
 
   async fetchCards() {

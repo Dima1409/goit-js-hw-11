@@ -10,8 +10,9 @@ const notify = new NotifyAlert();
 const api = new AxiosService();
 const btnMore = new LoadBtnMore();
 
+
 refs.searchForm.addEventListener('submit', onSubmitForm);
-refs.btnLoadMore.addEventListener('click', onClickBtnLoadMore);
+refs.loadMore.addEventListener('click', onClickBtnLoadMore);
 
 async function onSubmitForm(event) {
   event.preventDefault();
@@ -27,7 +28,7 @@ async function onSubmitForm(event) {
     }
     notify.onSuccess(data.data.totalHits);
     createCardsImage(data.data);
-    refs.btnLoadMore.classList.remove = 'is-hidden';
+    btnMore.showBtnLoadMore();
     btnMore.enableBtn();
   } catch (error) {
     console.warn(error);
