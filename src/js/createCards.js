@@ -23,7 +23,7 @@ function createCardsImage({ hits }) {
       }) => {
         return `<div class="photo-card">
       <a class="photo-card__item" href="${largeImageURL}">
-  <img class="photo-card__image" src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
+  <img class="photo-card__image" src="${webformatURL}" alt="${tags.toUpperCase()}" loading="lazy" /></a>
   <div class="info">
     <p class="info-item">
       <b>Likes</b> ${likes}

@@ -1,71 +1,12 @@
-body {
-    margin: 0;
-}
-.search-form {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: rgb(178, 116, 236);
-    margin-bottom: 60px;
-}
 
-.search-form input,
-.search-form button {
-    margin: 0;
-    border: none;
-    padding: 6px;
-}
+@import './base/glob';
+@import './components/glob';
+@import './layouts/glob';
+@import './utils/glob';
 
-.search-form input {
-    outline: none;
-    border-radius: 4px 0 0 4px;
-}
 
-.search-form button {
-    cursor: pointer;
-    background-color: rgb(231, 231, 231);
-    background-image: url(../images/search-svgrepo-com.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 50%;
-    display: block;
-    border-radius: 0 4px 4px 0;
-    min-width: 30px;
-    min-height: 30px;
-    transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
-}
 
-.search-form>button:hover {
-    background-color: rgb(189, 189, 189);
-}
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.photo-card {
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin-bottom: 20px;
-}
-.photo-card__image {
-  width: 300px;
-  height: 200px;
-}
-.photo-card__item {
-    display: block;
-    text-decoration: none;
-}
 
-.photo-card__item:hover {
-    cursor: zoom-in;
-}
-.info {
-    margin: 10px;
-}
 
-.is-hidden {
-    display: none;
-}
+

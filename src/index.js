@@ -10,7 +10,6 @@ const notify = new NotifyAlert();
 const api = new AxiosService();
 const btnMore = new LoadBtnMore();
 
-
 refs.searchForm.addEventListener('submit', onSubmitForm);
 refs.loadMore.addEventListener('click', onClickBtnLoadMore);
 
@@ -49,7 +48,20 @@ async function onClickBtnLoadMore() {
       btnMore.hideBtnLoadMore();
       notify.onSeachEndList();
     }
+    if (!data.data.totalHits) {
+      btnMore.hideBtnLoadMore();
+      notify.onSeachEndList();
+    }
   } catch (error) {
     console.warn(error);
   }
 }
+
+// const { height: cardHeight } = document
+//   .querySelector('.gallery')
+//   .firstElementChild.getBoundingClientRect();
+
+// window.scrollBy({
+//   top: cardHeight * 2,
+//   behavior: 'smooth',
+// });

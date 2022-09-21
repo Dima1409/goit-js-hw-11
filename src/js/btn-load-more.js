@@ -2,12 +2,11 @@ import getRefs from './get-refs';
 
 const refs = getRefs();
 
-
 export default class LoadBtnMore {
   constructor() {}
 
   showBtnLoadMore() {
-   refs.loadMore.classList.remove('is-hidden');
+    refs.loadMore.classList.remove('is-hidden');
   }
 
   hideBtnLoadMore() {
@@ -16,14 +15,11 @@ export default class LoadBtnMore {
 
   enableBtn() {
     refs.loadMore.disabled = false;
-    refs.loadMore.textContent = 'Load More';
-    return
+    return;
   }
 
   disableBtn() {
     refs.loadMore.disabled = true;
-    refs.loadMore.textContent = 'uploading...';
-    return
+    return;
   }
 }
-

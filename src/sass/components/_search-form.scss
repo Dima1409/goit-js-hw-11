@@ -1,0 +1,39 @@
+.search-form {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(var(--accent-color), var(--background-dark));
+    margin-bottom: 60px;
+}
+
+.search-form input,
+.search-form button {
+    margin: 0;
+    border: none;
+    padding: 6px;
+}
+
+.search-form input {
+    font-family: 'Chewy', cursive;
+    color: var(--background-dark);
+    outline: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-form>button {
+    cursor: pointer;
+    background-color: var(--btn-back);
+    background-image: url(../images/search-svgrepo-com.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    display: block;
+    border-radius: 0 4px 4px 0;
+    min-width: 30px;
+    min-height: 30px;
+    transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.search-form>button:hover {
+    background-color: var(--hover-btn);
+}
