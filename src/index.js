@@ -20,8 +20,14 @@ async function onSubmitForm(event) {
   clearCardsImage();
   api.resetPage();
 
+  console.log(api.query);
+
   try {
     const data = await api.fetchCards();
+    if (api.query === '') {
+      btnMore.hideBtnLoadMore();
+      return notify.onSearchNull();
+    }
     if (!api.query || data.data.totalHits === 0) {
       return notify.onError();
     }
@@ -40,15 +46,8 @@ async function onClickBtnLoadMore() {
     const data = await api.fetchCards();
     createCardsImage(data.data);
     btnMore.enableBtn();
-    console.log(data.data.totalHits);
-    console.log(api.currentPage);
-    console.log(api.perPage);
 
     if (api.currentPage * api.perPage > data.data.totalHits) {
-      btnMore.hideBtnLoadMore();
-      notify.onSeachEndList();
-    }
-    if (!data.data.totalHits) {
       btnMore.hideBtnLoadMore();
       notify.onSeachEndList();
     }

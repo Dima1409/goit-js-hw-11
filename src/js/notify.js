@@ -12,6 +12,10 @@ export default class NotifyAlert {
     return Notify.success(`Hooray! We found ${total} images.`);
   }
 
+  onSearchNull() {
+    return Notify.info('Please enter your search details');
+  }
+
   onSeachEndList() {
     return Notify.info(
       "We're sorry, but you've reached the end of search results."

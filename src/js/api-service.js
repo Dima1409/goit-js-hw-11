@@ -21,7 +21,6 @@ export default class AxiosService {
       safesearch: 'true',
     });
     const result = await axios.get(`${BASE_URL}?${options.toString()}`);
-    console.log(result);
     this.incrementPage();
     return result;
   }

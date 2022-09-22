@@ -4,5 +4,6 @@ export default function getRefs() {
     inputForm: document.querySelector('[name="searchQuery"]'),
     galleryContainer: document.querySelector('.gallery'),
     loadMore: document.querySelector('.load-more'),
+    submitBtn: document.querySelector('.search-form > button'),
   };
 }
