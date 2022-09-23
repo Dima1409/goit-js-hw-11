@@ -18,21 +18,29 @@ async function onSubmitForm(event) {
 
   api.query = event.currentTarget.elements.searchQuery.value;
   clearCardsImage();
+  btnMore.hideBtnLoadMore();
   api.resetPage();
 
   console.log(api.query);
+  
 
   try {
+    
     const data = await api.fetchCards();
     if (api.query === '') {
-      btnMore.hideBtnLoadMore();
       return notify.onSearchNull();
     }
     if (!api.query || data.data.totalHits === 0) {
       return notify.onError();
     }
+   
     notify.onSuccess(data.data.totalHits);
     createCardsImage(data.data);
+    console.log(data.data.totalHits)
+    console.log(api.perPage)
+    if(api.perPage>data.data.totalHits) {
+     return btnMore.hideBtnLoadMore()
+    }
     btnMore.showBtnLoadMore();
     btnMore.enableBtn();
   } catch (error) {
@@ -47,9 +55,9 @@ async function onClickBtnLoadMore() {
     createCardsImage(data.data);
     btnMore.enableBtn();
 
-    if (api.currentPage * api.perPage > data.data.totalHits) {
+    if (api.currentPage * api.perPage >= data.data.totalHits) {
       btnMore.hideBtnLoadMore();
-      notify.onSeachEndList();
+      notify.onSearchEndList();
     }
   } catch (error) {
     console.warn(error);
