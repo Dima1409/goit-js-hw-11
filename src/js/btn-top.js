@@ -4,7 +4,6 @@ const refs = getRefs();
 
 export default function scrollBtn() {
   refs.btnTop.addEventListener('click', up);
-  //   refs.btnTop.addEventListener('click', topFunction);
 
   window.onscroll = function () {
     scrollFunction();
@@ -20,11 +19,6 @@ export default function scrollBtn() {
       refs.btnTop.style.display = 'none';
     }
   }
-
-  //   function topFunction() {
-  //     document.body.scrollTop = 0;
-  //     document.documentElement.scrollTop = 0;
-  //   }
 
   let t;
   function up() {
