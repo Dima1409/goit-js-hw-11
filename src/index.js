@@ -5,16 +5,18 @@ import LoadBtnMore from './js/btn-load-more';
 import AxiosService from './js/api-service';
 import scrollBtn from './js/btn-top';
 import { createCardsImage, clearCardsImage } from './js/createCards';
+import smoothScrolling from './js/smooth-scrolling';
 
 const refs = getRefs();
 const notify = new NotifyAlert();
 const api = new AxiosService();
 const btnMore = new LoadBtnMore();
+smoothScrolling();
 scrollBtn();
 
 refs.searchForm.addEventListener('submit', onSubmitForm);
 refs.loadMore.addEventListener('click', onClickBtnLoadMore);
-
+// document.addEventListener('scroll', smoothScrolling);
 async function onSubmitForm(event) {
   event.preventDefault();
 
